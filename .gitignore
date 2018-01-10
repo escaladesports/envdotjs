@@ -21,6 +21,9 @@ dist-es5/
 dist-modules/
 coverage/
 .eslintcache
+envdotjs-key
+env.js
+env.js.enc
 
 # Temporary
 temp
