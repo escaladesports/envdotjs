@@ -26,6 +26,7 @@
     "build:es6": "cross-env BABEL_ENV=es6 babel ./src --out-dir ./dist-es6",
     "build:es5": "cross-env BABEL_ENV=es5 babel ./src --out-dir ./dist-es5",
     "prepublishOnly": "npm run test && npm run build",
+    "relink": "npm unlink && npm run build && npm link",
     "test": "cross-env BABEL_ENV=es5 mocha --require babel-core/register"
   },
   "pre-commit": [

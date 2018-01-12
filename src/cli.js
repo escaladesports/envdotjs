@@ -35,12 +35,12 @@ const cli = meow(`
 	}
 })
 
-if (cli.flags.unencrypt) {
-	encrypt({
-		output: true,
-		...cli.flags
-	})
+if (!cli.flags.unencrypt) {
+	encrypt()
 }
 else{
-	unencrypt(cli.flags)
+	unencrypt({
+		output: 'env.js',
+		...cli.flags
+	})
 }
