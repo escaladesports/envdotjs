@@ -8,8 +8,8 @@ const cli = meow(`
 
     Options
       --key, -k     Set an encryption key, defaults to contents of envdotjs-key file in root
-		--path, -p    Path to your .js file, defaults to env.js
-		--output, -o  Path to the encrypted output, defaults to {path}.enc
+      --path, -p    Path to your .js file, defaults to env.js
+      --output, -o  Path to the encrypted output, defaults to {path}.enc
 
     Examples
       $ envdotjs --key my-key

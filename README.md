@@ -1,7 +1,5 @@
 # envdotjs
 
-WIP
-
 Store your environment variables in a dynamic env.js file and encrypt so you can commit your variables to source control.
 
 ## Installation
@@ -58,4 +56,30 @@ require('envdotjs').load({
 })
 ```
 
+## Options
+
+- `key`: Sets encryption key. Defaults to process.env.ENVDOTJS_KEY, then contents of envdotjs-key.
+- `path`: Path to your encrypted or unencrypted environment file. Defaults to env.js.enc, then env.js.
+
 ## Encryption
+
+You can encrypt files using the node module itself, but it's more convenient to use the CLI.
+
+### Installation
+
+```bash
+npm install --global envdotjs
+```
+
+### Usage
+
+```bash
+envdotjs
+```
+
+This will encrypt your `env.js` file using the key that's location in your `envdotjs-key` file. For more advanced usage, check for options with `envdotjs --help`
+
+## Best Practices
+
+- Encrypt your `env.js` file any time you make a change. This will ensure your development environment matches your deploys.
+-
