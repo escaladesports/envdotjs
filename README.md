@@ -81,5 +81,5 @@ This will encrypt your `env.js` file using the key that's location in your `envd
 
 ## Best Practices
 
-- Encrypt your `env.js` file any time you make a change. This will ensure your development environment matches your deploys.
+- Encrypt your `env.js` file any time it changes. This will ensure your development environment matches your deploys.
 - Never commit `env.js` or `envdotjs-key` files to source control
