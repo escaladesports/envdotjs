@@ -29,21 +29,17 @@ const cli = meow(`
 			alias: 'o',
 		},
 		unencrypt: {
-			type: 'string',
+			type: 'boolean',
 			alias: 'u',
 		}
 	}
 })
 
-if ('unencrypt' in cli.flags) {
-	const options = {
+if (cli.flags.unencrypt) {
+	encrypt({
 		output: true,
 		...cli.flags
-	}
-	if(cli.flags.unencrypt){
-		options.path = cli.flags.unencrypt
-	}
-	encrypt(options)
+	})
 }
 else{
 	unencrypt(cli.flags)
