@@ -1,6 +1,6 @@
 import { expect } from 'chai'
 import { readFile, outputFile, remove } from 'fs-extra'
-import { getKey, encrypt, unencrypt } from '../src'
+import { getKey, encrypt, unencrypt, load } from '../src'
 
 process.env.ENVDOTJS_KEY = '123'
 
@@ -38,6 +38,15 @@ describe('unencrypt', () => {
 		await outputFile('./env.js.enc', '95c1fe2c574151be5afd5bc1cb028b2e199e7f8fa70605cd227ae873a0d23479b7d1e732267ad0024fe69b')
 		const contents = unencrypt()
 		expect(contents.TEST_ENV).to.equal('test value')
+		await remove('./env.js.enc')
+	})
+})
+
+describe('load', () => {
+	it('Loads an environment file', async () => {
+		await outputFile('./env.js.enc', '95c1fe2c574151be5afd5bc1cb028b2e199e7f8fa70605cd227ae873a0d23479b7d1e732267ad0024fe69b')
+		load()
+		expect(process.env.TEST_ENV).to.equal('test value')
 		await remove('./env.js.enc')
 	})
 })
