@@ -11,6 +11,9 @@
   "main": "dist-es5/index.js",
   "module": "dist-es6/index.js",
   "jsnext:main": "dist-es6/index.js",
+  "bin": {
+    "envdotjs": "dist-es5/cli.js"
+  },
   "author": "Kennedy Rose <krose@escaladesports.com>",
   "repository": {
     "type": "git",
@@ -47,6 +50,7 @@
   },
   "dependencies": {
     "fs-extra": "^5.0.0",
+    "meow": "^4.0.0",
     "require-from-string": "^2.0.1"
   }
 }
