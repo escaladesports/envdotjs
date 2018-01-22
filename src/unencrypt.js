@@ -1,7 +1,7 @@
 import { pathExistsSync, readFileSync, outputFileSync } from 'fs-extra'
 import { resolve } from 'path'
 import { createDecipher } from 'crypto'
-import requireFromString from 'require-from-string'
+import requireFromString from './require-from-string'
 
 import getKey from './get-key'
 
