@@ -12,6 +12,9 @@ export default function (options = {}){
 		...options
 	}
 	options.key = getKey(options)
+	if(!options.key){
+		return
+	}
 	const fullPath = resolve(process.cwd(), options.path)
 	if(options.output && typeof options.output !== 'string'){
 		options.output = options.path.replace(/.enc$/, '')
