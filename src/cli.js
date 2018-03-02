@@ -1,12 +1,6 @@
 #! /usr/bin/env node
 import sc from 'subcommander'
 import { encrypt, unencrypt } from './index'
-import pkg from './package.json'
-
-sc.command(`version`, {
-		desc: `Display version`,
-		callback: () => console.log(pkg.version)
-	})
 
 sc.command(`encrypt`, {
 		desc: `Encrypts a env.js file`
