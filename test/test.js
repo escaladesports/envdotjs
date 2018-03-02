@@ -1,6 +1,6 @@
 import { expect } from 'chai'
 import { readFile, outputFile, remove } from 'fs-extra'
-import { getKey, encrypt, unencrypt, load } from '../src'
+import { getKey, encrypt, unencrypt, load } from '../dist-es5'
 
 process.env.ENVDOTJS_KEY = '123'
 
