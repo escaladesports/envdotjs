@@ -1,6 +1,6 @@
 {
   "name": "envdotjs",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "keywords": [
     "envdotjs",
     "env",
@@ -27,8 +27,8 @@
     "build:es5": "cross-env BABEL_ENV=es5 babel ./src --out-dir ./dist-es5",
     "prepublishOnly": "npm run test && npm run build",
     "relink": "npm unlink && npm run build && npm link",
-	 "test": "cross-env BABEL_ENV=es5 mocha --require babel-core/register",
-	 "travis": "opn https://travis-ci.org/escaladesports/envdotjs/branches"
+    "test": "cross-env BABEL_ENV=es5 mocha --require babel-core/register",
+    "travis": "opn https://travis-ci.org/escaladesports/envdotjs/branches"
   },
   "pre-commit": [
     "test"
