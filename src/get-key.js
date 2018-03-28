@@ -8,7 +8,7 @@ export default function (options = {}){
 		keyPath: 'envdotjs-key',
 		...options
 	}
-	if (!options.key) {
+	if (!options.key || options.key === 'undefined') {
 		options.keyPath = resolve(process.cwd(), options.keyPath)
 		if (pathExistsSync(options.keyPath)){
 			options.key = readFileSync(options.keyPath).toString()
