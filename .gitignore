@@ -22,6 +22,8 @@ coverage/
 envdotjs-key
 env.js
 env.js.enc
+.postcssrc
+.babelrc
 
 # Temporary
 temp
