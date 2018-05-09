@@ -4,20 +4,20 @@ import { createCipher } from 'crypto'
 
 import getKey from './get-key'
 
-export default async function (options = {}){
+async function encrypt(options = {}){
 	// Default options
 	options = {
 		path: 'env.js',
 		...options
 	}
-	if(!options.output){
+	if (!options.output) {
 		options.output = options.path + '.enc'
 	}
-	const fullPath = resolve(process.cwd(), options.path)
+	let fullPath = resolve(process.cwd(), options.path)
 	options.output = resolve(process.cwd(), options.output)
 	options.key = getKey(options)
 
-	if (options.key){
+	if (options.key) {
 		// Read file
 		if (!await pathExists(fullPath)) {
 			return console.log(`${options.path} file not found`)
@@ -25,7 +25,7 @@ export default async function (options = {}){
 		let contents = await readFile(fullPath, 'utf8')
 
 		// Encrypt contents
-		const cipher = createCipher('aes-256-ctr', options.key)
+		let cipher = createCipher('aes-256-ctr', options.key)
 		contents = cipher.update(contents, 'utf8', 'hex')
 		contents += cipher.final('hex')
 
@@ -33,3 +33,5 @@ export default async function (options = {}){
 		await outputFile(options.output, contents)
 	}
 }
+
+export default encrypt

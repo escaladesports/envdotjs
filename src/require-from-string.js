@@ -1,7 +1,7 @@
 import Module from 'module'
 import path from 'path'
 
-export default function (code, filename, opts) {
+function requireFromString(code, filename, opts) {
 	if (typeof filename === 'object') {
 		opts = filename
 		filename = undefined
@@ -30,3 +30,5 @@ export default function (code, filename, opts) {
 
 	return exports
 }
+
+export default requireFromString

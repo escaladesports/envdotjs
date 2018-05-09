@@ -5,18 +5,18 @@ import requireFromString from './require-from-string'
 
 import getKey from './get-key'
 
-export default function (options = {}){
+function unencrypt(options = {}){
 	// Default options
 	options = {
 		path: 'env.js.enc',
 		...options
 	}
 	options.key = getKey(options)
-	if(!options.key){
+	if (!options.key) {
 		return
 	}
 	const fullPath = resolve(process.cwd(), options.path)
-	if(options.output && typeof options.output !== 'string'){
+	if (options.output && typeof options.output !== 'string') {
 		options.output = options.path.replace(/.enc$/, '')
 	}
 
@@ -35,9 +35,11 @@ export default function (options = {}){
 	contents += decipher.final('utf8')
 
 	// Output file
-	if(options.output){
+	if (options.output) {
 		outputFileSync(options.output, contents)
 	}
 
 	return requireFromString(contents)
 }
+
+export default unencrypt
