@@ -26,7 +26,7 @@
     "asdf": "babel-node src/cli version"
   },
   "devDependencies": {
-    "esca-scripts": "^1.1.17",
+    "esca-scripts": "^1.3.1",
     "opn-cli": "^3.1.0"
   },
   "dependencies": {
