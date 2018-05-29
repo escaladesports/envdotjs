@@ -22,7 +22,8 @@
     "build": "esca-scripts build",
     "prepublishOnly": "npm run build",
     "test": "npm run build && esca-scripts test",
-    "travis": "opn https://travis-ci.org/escaladesports/envdotjs/branches"
+    "travis": "opn https://travis-ci.org/escaladesports/envdotjs/branches",
+    "asdf": "babel-node src/cli version"
   },
   "devDependencies": {
     "esca-scripts": "^1.1.17",

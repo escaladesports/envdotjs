@@ -5,10 +5,10 @@ function getKey(options = {}){
 	// Default options
 	options = {
 		key: process.env.ENVDOTJS_KEY,
-		keyPath: 'envdotjs-key',
+		keyPath: `env.js.key`,
 		...options
 	}
-	if (!options.key || options.key === 'undefined') {
+	if (!options.key || options.key === `undefined`) {
 		options.keyPath = resolve(process.cwd(), options.keyPath)
 		if (pathExistsSync(options.keyPath)) {
 			options.key = readFileSync(options.keyPath)
@@ -16,7 +16,7 @@ function getKey(options = {}){
 				.trim()
 		}
 		else {
-			console.log('No envdotjs key found.')
+			console.log(`No envdotjs key found. Include key in environment variable ENVDOTJS_KEY or in an env.js.key file.`)
 		}
 	}
 	return options.key
