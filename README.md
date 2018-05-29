@@ -60,6 +60,7 @@ require('envdotjs').load({
 
 - `key`: Sets encryption key. Defaults to process.env.ENVDOTJS_KEY, then contents of env.js.key.
 - `path`: Path to your encrypted or unencrypted environment file. Defaults to env.js.enc, then env.js.
+- `strict`: Set to true if you want endotjs to throw an error if something goes wrong. By default, it will just log a warning to the console.
 
 ## Encryption
 
