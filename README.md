@@ -40,11 +40,11 @@ If you want to encrypt your variables, you first need to set a key. There are 3 
 
 ### Setting your key with a file
 
-Create a `envdotjs-key` file in the root of your project containing whatever key you want to use. envdotjs will automatically find this file and use it to encrypt and unencrypt the contents of your `env.js` file. Make sure you don't check this file or your `env.js` file into source control.
+Create a `env.js.key` file in the root of your project containing whatever key you want to use. envdotjs will automatically find this file and use it to encrypt and unencrypt the contents of your `env.js` file. Make sure you don't check this file or your `env.js` file into source control.
 
 ### Setting your key in the environment
 
-You can also set a variable in the environment called `ENVDOTJS_KEY` with the value of your key. If you also have a `envdotjs-key` file and the environment variable set, the environment variable will get used.
+You can also set a variable in the environment called `ENVDOTJS_KEY` with the value of your key. If you also have a `env.js.key` file and the environment variable set, the environment variable will get used.
 
 ### Setting your key with options
 
@@ -58,7 +58,7 @@ require('envdotjs').load({
 
 ## Options
 
-- `key`: Sets encryption key. Defaults to process.env.ENVDOTJS_KEY, then contents of envdotjs-key.
+- `key`: Sets encryption key. Defaults to process.env.ENVDOTJS_KEY, then contents of env.js.key.
 - `path`: Path to your encrypted or unencrypted environment file. Defaults to env.js.enc, then env.js.
 
 ## Encryption
@@ -77,9 +77,9 @@ npm install --global envdotjs
 envdotjs
 ```
 
-This will encrypt your `env.js` file using the key that's location in your `envdotjs-key` file. For more advanced usage, check for options with `envdotjs --help`
+This will encrypt your `env.js` file using the key that's location in your `env.js.key` file. For more advanced usage, check for options with `envdotjs --help`
 
 ## Best Practices
 
 - Encrypt your `env.js` file any time it changes. This will ensure your development environment matches your deploys.
-- Never commit `env.js` or `envdotjs-key` files to source control
+- Never commit `env.js` or `env.js.key` files to source control
