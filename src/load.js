@@ -3,14 +3,14 @@ import { resolve, extname } from 'path'
 
 import unencrypt from './unencrypt'
 
-export default function (options = {}){
+function load(options = {}) {
 	// Default options
 	options = {
 		...options
 	}
 
 	let noPath
-	if(!options.path){
+	if (!options.path) {
 		options.path = 'env.js.enc'
 		noPath = true
 	}
@@ -19,14 +19,14 @@ export default function (options = {}){
 
 
 	// Import encrypted file
-	if(extname(options.path) === '.enc'){
+	if (extname(options.path) === '.enc') {
 		if (pathExistsSync(options.path)) {
 			obj = unencrypt(options)
 		}
 		// If using default path, also attempt to import unencrypted version
-		else if(noPath){
+		else if (noPath) {
 			options.path = options.path.replace(/.enc$/, '')
-			if (pathExistsSync(options.path)){
+			if (pathExistsSync(options.path)) {
 				obj = require(options.path)
 			}
 		}
@@ -46,3 +46,5 @@ export default function (options = {}){
 
 	return obj
 }
+
+export default load
