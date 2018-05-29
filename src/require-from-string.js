@@ -3,14 +3,8 @@ import path from 'path'
 
 const errorMsg = `Contents of env.js are not valid. Make sure your envdotjs key is correct.`
 
-function requireFromString(code, filename, opts) {
-	if (typeof filename === `object`) {
-		opts = filename
-		filename = undefined
-	}
-
-	opts = opts || {}
-	filename = filename || ``
+function requireFromString(code, opts = {}) {
+	let filename = ``
 
 	opts.appendPaths = opts.appendPaths || []
 	opts.prependPaths = opts.prependPaths || []

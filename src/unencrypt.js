@@ -43,7 +43,7 @@ function unencrypt(options = {}){
 		outputFileSync(options.output, contents)
 	}
 
-	return requireFromString(contents, null, options)
+	return requireFromString(contents, options)
 }
 
 export default unencrypt
