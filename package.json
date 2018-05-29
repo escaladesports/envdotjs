@@ -10,7 +10,7 @@
   ],
   "main": "dist/index.js",
   "bin": {
-    "envdotjs": "dist-es5/cli.js"
+    "envdotjs": "dist/cli.js"
   },
   "author": "Kennedy Rose <krose@escaladesports.com>",
   "repository": {
