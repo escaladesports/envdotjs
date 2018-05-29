@@ -32,8 +32,7 @@ describe(`encrypt`, () => {
 	it(`Encrypts a file`, async () => {
 		await outputFile(`./env.js`, input)
 		await encrypt({ key })
-		let contents = await readFile(`./env.js.enc`)
-		contents = contents.toString()
+		const contents = (await readFile(`./env.js.enc`)).toString()
 		expect(contents).toEqual(output)
 		await remove(`./env.js`)
 		await remove(`./env.js.enc`)

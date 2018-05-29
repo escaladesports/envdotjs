@@ -2,13 +2,12 @@ import { pathExistsSync, readFileSync, outputFileSync } from 'fs-extra'
 import { resolve } from 'path'
 import { createDecipher } from 'crypto'
 import requireFromString from './require-from-string'
-
 import getKey from './get-key'
 
 function unencrypt(options = {}){
 	// Default options
 	options = {
-		path: 'env.js.enc',
+		path: `env.js.enc`,
 		...options
 	}
 	options.key = getKey(options)
@@ -16,13 +15,13 @@ function unencrypt(options = {}){
 		return {}
 	}
 	const fullPath = resolve(process.cwd(), options.path)
-	if (options.output && typeof options.output !== 'string') {
-		options.output = options.path.replace(/.enc$/, '')
+	if (options.output && typeof options.output !== `string`) {
+		options.output = options.path.replace(/.enc$/, ``)
 	}
 
 	if (!pathExistsSync(fullPath)) {
 		if (options.strict) {
-			throw `${options.path} file not found`
+			throw new Error(`${options.path} file not found`)
 		}
 		else {
 			console.warn(`${options.path} file not found`)
@@ -35,9 +34,9 @@ function unencrypt(options = {}){
 	contents = contents.toString()
 
 	// Unencrypt contents
-	const decipher = createDecipher('aes-256-ctr', options.key)
-	contents = decipher.update(contents, 'hex', 'utf8')
-	contents += decipher.final('utf8')
+	const decipher = createDecipher(`aes-256-ctr`, options.key)
+	contents = decipher.update(contents, `hex`, `utf8`)
+	contents += decipher.final(`utf8`)
 
 	// Output file
 	if (options.output) {

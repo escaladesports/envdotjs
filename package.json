@@ -32,7 +32,6 @@
   "dependencies": {
     "babel-runtime": "^6.26.0",
     "fs-extra": "^5.0.0",
-    "meow": "^4.0.0",
     "subcommander": "^1.0.0"
   }
 }

@@ -4,19 +4,20 @@ import path from 'path'
 const errorMsg = `Contents of env.js are not valid. Make sure your envdotjs key is correct.`
 
 function requireFromString(code, filename, opts) {
-	if (typeof filename === 'object') {
+	if (typeof filename === `object`) {
 		opts = filename
 		filename = undefined
 	}
 
 	opts = opts || {}
-	filename = filename || ''
+	filename = filename || ``
 
 	opts.appendPaths = opts.appendPaths || []
 	opts.prependPaths = opts.prependPaths || []
 
-	if (typeof code !== 'string') {
-		throw new Error('code must be a string, not ' + typeof code)
+	let t = typeof code
+	if (t !== `string`) {
+		throw new Error(`Code must be a string, not ${t}`)
 	}
 
 	let exports
@@ -32,7 +33,7 @@ function requireFromString(code, filename, opts) {
 	}
 	catch(err){
 		if(opts.strict){
-			throw errorMsg
+			throw new Error(errorMsg)
 		}
 		else {
 			exports = {}
