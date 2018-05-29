@@ -16,7 +16,7 @@ function getKey(options = {}){
 				.trim()
 		}
 		else {
-			console.log(`No envdotjs key found. Include key in environment variable ENVDOTJS_KEY or in an env.js.key file.`)
+			console.warn(`No envdotjs key found. Include key in environment variable ENVDOTJS_KEY or in an env.js.key file.`)
 		}
 	}
 	return options.key
