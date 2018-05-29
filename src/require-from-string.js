@@ -1,6 +1,8 @@
 import Module from 'module'
 import path from 'path'
 
+const errorMsg = `Contents of env.js are not valid. Make sure your envdotjs key is correct.`
+
 function requireFromString(code, filename, opts) {
 	if (typeof filename === 'object') {
 		opts = filename
@@ -29,8 +31,13 @@ function requireFromString(code, filename, opts) {
 		parent && parent.children && parent.children.splice(parent.children.indexOf(m), 1)
 	}
 	catch(err){
-		exports = {}
-		console.warn(`Contents of env.js are not valid. Make sure your envdotjs key is correct.`)
+		if(opts.strict){
+			throw errorMsg
+		}
+		else {
+			exports = {}
+			console.warn(errorMsg)
+		}
 	}
 
 

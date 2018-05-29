@@ -20,7 +20,7 @@ async function encrypt(options = {}){
 	if (options.key) {
 		// Read file
 		if (!await pathExists(fullPath)) {
-			return console.log(`${options.path} file not found`)
+			return console.error(`${options.path} file not found`)
 		}
 		let contents = await readFile(fullPath, 'utf8')
 

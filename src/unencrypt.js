@@ -21,8 +21,13 @@ function unencrypt(options = {}){
 	}
 
 	if (!pathExistsSync(fullPath)) {
-		console.log(`${options.path} file not found`)
-		return {}
+		if (options.strict) {
+			throw `${options.path} file not found`
+		}
+		else {
+			console.warn(`${options.path} file not found`)
+			return {}
+		}
 	}
 
 	// Read file

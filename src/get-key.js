@@ -1,6 +1,8 @@
 import { pathExistsSync, readFileSync } from 'fs-extra'
 import { resolve } from 'path'
 
+const errorMsg = `No envdotjs key found. Include key in environment variable ENVDOTJS_KEY or in an env.js.key file.`
+
 function getKey(options = {}){
 	// Default options
 	options = {
@@ -15,8 +17,11 @@ function getKey(options = {}){
 				.toString()
 				.trim()
 		}
+		else if(options.strict){
+			throw errorMsg
+		}
 		else {
-			console.warn(`No envdotjs key found. Include key in environment variable ENVDOTJS_KEY or in an env.js.key file.`)
+			console.warn(errorMsg)
 		}
 	}
 	return options.key
