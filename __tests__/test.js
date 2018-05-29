@@ -54,6 +54,18 @@ describe(`unencrypt`, () => {
 		expect(contents.TEST_ENV).toEqual(`test value`)
 		await remove(`./env.js.enc`)
 	})
+	it(`Should not unencrypt if no key is found`, async () => {
+		await outputFile(`./env.js.enc`, output)
+		const contents = unencrypt()
+		expect(contents).toEqual({})
+		await remove(`./env.js.enc`)
+	})
+	it(`Should fail if key is incorrect`, async () => {
+		await outputFile(`./env.js.enc`, output)
+		const contents = unencrypt({ key: `789` })
+		expect(contents).toEqual({})
+		await remove(`./env.js.enc`)
+	})
 })
 
 describe(`load`, () => {
@@ -61,6 +73,13 @@ describe(`load`, () => {
 		await outputFile(`./env.js.enc`, output)
 		load({ key })
 		expect(process.env.TEST_ENV).toEqual(`test value`)
+		delete process.env.TEST_ENV
+		await remove(`./env.js.enc`)
+	})
+	it(`Should fail to load if no key is found`, async () => {
+		await outputFile(`./env.js.enc`, output)
+		load()
+		expect(process.env.TEST_ENV).toEqual(undefined)
 		await remove(`./env.js.enc`)
 	})
 })

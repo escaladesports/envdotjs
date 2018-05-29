@@ -17,16 +17,22 @@ function requireFromString(code, filename, opts) {
 		throw new Error('code must be a string, not ' + typeof code)
 	}
 
-	let paths = Module._nodeModulePaths(path.dirname(filename))
+	let exports
+	try {
+		let paths = Module._nodeModulePaths(path.dirname(filename))
+		let parent = module.parent
+		let m = new Module(filename, parent)
+		m.filename = filename
+		m.paths = [].concat(opts.prependPaths).concat(paths).concat(opts.appendPaths)
+		m._compile(code, filename)
+		exports = m.exports
+		parent && parent.children && parent.children.splice(parent.children.indexOf(m), 1)
+	}
+	catch(err){
+		exports = {}
+		console.warn(`Contents of env.js are not valid. Make sure your envdotjs key is correct.`)
+	}
 
-	let parent = module.parent
-	let m = new Module(filename, parent)
-	m.filename = filename
-	m.paths = [].concat(opts.prependPaths).concat(paths).concat(opts.appendPaths)
-	m._compile(code, filename)
-
-	let exports = m.exports
-	parent && parent.children && parent.children.splice(parent.children.indexOf(m), 1)
 
 	return exports
 }

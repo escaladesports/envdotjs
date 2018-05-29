@@ -13,7 +13,7 @@ function unencrypt(options = {}){
 	}
 	options.key = getKey(options)
 	if (!options.key) {
-		return
+		return {}
 	}
 	const fullPath = resolve(process.cwd(), options.path)
 	if (options.output && typeof options.output !== 'string') {
