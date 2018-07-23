@@ -75,7 +75,7 @@ npm install --global envdotjs
 ### Usage
 
 ```bash
-envdotjs
+envdotjs encrypt
 ```
 
 This will encrypt your `env.js` file using the key that's location in your `env.js.key` file. For more advanced usage, check for options with `envdotjs --help`
